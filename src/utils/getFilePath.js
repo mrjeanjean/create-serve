@@ -12,5 +12,10 @@ export const getFilePath = request => {
 		if (fs.existsSync(testFilepath)) return testFilepath;
 	}
 
+	if (!request.url.includes('.')) {
+		const testFilepath = `${root}/${request.url}/index.html`;
+		if (fs.existsSync(testFilepath)) return testFilepath;
+	}
+
 	return root + request.url;
 };
